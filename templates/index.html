@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainApp" id="top">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>News Aggregator</title>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+	<div id="wrapper">
+		<div ng-controller="TabsCtrl" style="width:80%; margin:0 auto;">
+		   <tabset>
+		    <tab select="reddit()">
+		    	<tab-heading>REDDIT</tab-heading>
+		    	<div class="tab-content" ng-include src="'/#/tab-content.html'"></div>
+		    </tab>
+		    <tab select="hackernews()">
+		    	<tab-heading>HACKERNEWS</tab-heading>
+		    	<div class="tab-content" ng-include src="'/#/tab-content.html'"></div>
+		    </tab>
+		    <tab select="bloomberg()">
+		    	<tab-heading>BLOOMBERG</tab-heading>
+		    	<div class="tab-content" ng-include src="'/#/tab-content.html'"></div>
+		    </tab>
+		  </tabset>
+		</div>
+	</div>
+
+	<script type="text/ng-template" id="/#/tab-content.html">
+		<table class="table table-bordered">
+			<thead>
+			</thead>
+			<tbody>
+			<tr ng-repeat="entry in tab_content">
+				<td><a target="_blank" href="{{ entry.url }}">{{ entry.title }}</a></td>
+			</tr>
+			</tbody>
+		</table>
+	</script>
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-resource.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.js"></script>
+	<script src="/js/ui-bootstrap-tpls-0.10.0.min.js"></script>
+	<script src="/js/site.js"></script>
+		
+</body>
+</html>
+
