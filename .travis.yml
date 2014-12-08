@@ -9,7 +9,7 @@ after_success:
   - base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa
   - echo -e "Host 54.169.75.67\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - ssh ubuntu@54.169.75.67 "echo `date` >> /tmp/datelog"
+  - ssh ubuntu@54.169.75.67 "curl -L https://gist.githubusercontent.com/appsan/2758480d7c1d8e8ba9d1/raw/deploy-chef-solo.sh | bash"
       
 env:
   global:
